@@ -1,0 +1,42 @@
+footer p {
+    text-align: center;
+}
+
+table {
+    display: table;
+}
+
+table#tabela-agendamentos td {
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+tr td:nth-child(9):hover {
+    background-color: #eee;
+}
+
+tr td:nth-child(9) {
+    background-image: url(img/edit.png);
+    background-repeat: no-repeat;
+    background-position: right center;
+    padding-right: 50px;
+    cursor: pointer;
+}
+
+tr td:nth-child(6).em-edicao {
+    background-image: none;
+}
+.delete {
+    color: #fff;
+    font-weight: bolder;
+    display: block;
+    margin: 4px auto;
+    border: 1px solid #9a0e04;
+    border-radius: 5px;
+    background-color: #f44336;
+    cursor: pointer;
+}
+.delete:hover {
+    cursor: pointer;
+    background-color: #9a0e04;
+}
