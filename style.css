@@ -40,3 +40,10 @@ tr td:nth-child(6).em-edicao {
     cursor: pointer;
     background-color: #9a0e04;
 }
+
+#clima {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 10px;
+    font-weight: normal;
+}

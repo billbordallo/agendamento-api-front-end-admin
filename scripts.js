@@ -104,3 +104,33 @@ const removeElement = () => {
         console.error('Error:', error);
       });
   }
+
+  /*
+  --------------------------------------------------------------------------------------
+  Função para obter a previsão do tempo via requisição GET (a conexão com a API do OpenWeatherMap é feita no servidor back-end)
+  --------------------------------------------------------------------------------------
+*/
+const getPrevisao = async () => {
+  let url = 'http://127.0.0.1:5000/clima';
+  fetch(url, {
+    method: 'get',
+  })
+    .then((response) => response.json())
+    .then((data) => {
+      // Aqui você pode usar os dados recebidos para atualizar a interface do usuário
+    document.getElementById('cidade').textContent = data.cidade;
+    document.getElementById('dia').textContent = data['Dia e hora'];
+    document.getElementById('descricao').textContent = data.previsão;
+    document.getElementById('temperatura').textContent = data.temperatura;
+    })
+    .catch((error) => {
+      console.error('Error:', error);
+    });
+}
+
+/*
+  --------------------------------------------------------------------------------------
+  Chamada carregar a previsão do tempo
+  --------------------------------------------------------------------------------------
+*/
+getPrevisao()
