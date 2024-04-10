@@ -27,36 +27,22 @@
     </header>
     <main>
         <section>
-            <div id="clima">
-                <p>Programe-se! Confira a previsão do tempo para amanhã:</p>
-                <ul id="previsao">
-                    <li><strong>Cidade:</strong> <br><span id="cidade"></span></li>
-                    <li><strong>Dia e hora:</strong> <br><span id="dia"></span></li>
-                    <li><strong>Previsão:</strong> <br><span id="descricao"></span></li>
-                    <li><strong>Temperatura:</strong> <br><span id="temperatura"></span></li>
-                </ul>
-            </div>
-        </section>
-        <section>
-            <h2>Agendamentos</h2>
-            <table id="tabela-agendamentos">
+            <h2>Serviços</h2>
+            <p>Os seguintes serviços estão cadastrados no sistema:</p>
+            <table id="tabela-servicos">
                 <thead>
                     <tr>
                         <th>#</th>
-                        <th>Nome</th>
-                        <th>E-mail</th>
-                        <th>Celular</th>
-                        <th>Endereço</th>
-                        <th>Data</th>
-                        <th>Hora</th>
-                        <th>Serviço</th>
-                        <th>Status (clique para editar)</th>
+                        <th>Nome do serviço</th>
+                        <th>Descrição do serviço</th>
+                        <th>Duração</th>
+                        <th>Valor</th>
                         <th>Remover</th>
                     </tr>
                 </thead>
-                <tbody id="agendamentos">
+                <tbody id="servicos">
                     <tr>
-                        <td colspan="9" id="nenhum-pedido">Ainda não há nenhum agendamento cadastrado. Envie o link para seus clientes para que eles realizem um agendamento.</th>
+                        <td colspan="6" id="nenhum-servico">Ainda não há nenhum serviço cadastrado. <a href="novo-servico.html">Cadastre o primeiro serviço clicando aqui</a>.</th>
                     </tr>
                 </tbody>
             </table>
@@ -66,6 +52,6 @@
         <p>Desenvolvido por <a href="https://github.com/billbordallo" target="_blank">Bill Bordallo</a></p>
         <p>© Copyright 2024. Todos os direitos reservados.</p>
     </footer>
-    <script src="js/scripts.js"></script>
+    <script src="js/servicos-scripts.js"></script>
 </body>
 </html>

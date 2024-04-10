@@ -105,7 +105,7 @@ const removeElement = () => {
       });
   }
 
-  /*
+/*
   --------------------------------------------------------------------------------------
   Função para obter a previsão do tempo via requisição GET (a conexão com a API do OpenWeatherMap é feita no servidor back-end)
   --------------------------------------------------------------------------------------
@@ -125,12 +125,140 @@ const getPrevisao = async () => {
     })
     .catch((error) => {
       console.error('Error:', error);
+
+      // Em caso de erro na requisição, exibe um aviso na interface do usuário
+      let p = document.createElement('p');
+      // Define o conteúdo do texto do elemento p
+      p.textContent = 'Não foi possível obter a previsão do tempo.';
+      // Adiciona o elemento p ao corpo do documento
+      document.getElementById('clima').appendChild(p);
+
     });
 }
 
 /*
   --------------------------------------------------------------------------------------
-  Chamada carregar a previsão do tempo
+  Chamada para carregar a previsão do tempo
   --------------------------------------------------------------------------------------
 */
 getPrevisao()
+
+/*
+  --------------------------------------------------------------------------------------
+  Função para criar um select ao clicar sobre a coluna status
+  --------------------------------------------------------------------------------------
+*/
+
+// Obtenho uma referência à tabela
+var table2 = document.getElementById('tabela-agendamentos');
+
+// Adiciono um listener de clique à tabela
+table2.addEventListener('click', function (event) {
+
+  // Se o elemento clicado é uma célula td
+  if (event.target.nodeName === 'TD') {
+
+    // Se a célula clicada é a nona célula da linha (pois é a única coluna que pode ser editada)
+    if (event.target.cellIndex === 8) {
+
+      // Adiciono à célula a classe "em-edicao"
+      event.target.classList.add('em-edicao');
+
+      // Removo o conteúdo de texto da célula
+      event.target.textContent = '';
+
+      // Se o elemento clicado tem a classe 'editar-status' (inserida via css), crie o select
+      if (event.target.classList.contains('editar-status')) {
+
+        // Crio um novo elemento select
+        var select = document.createElement('select');
+
+        // Defino as options que serão usadas no select
+        var optionsText = ['', 'Aguardando confirmação', 'Confirmado', 'Cancelado', 'Concluído'];
+
+        // Crio 4 options e as adiciono ao select
+        for (var j = 0; j < optionsText.length; j++) {
+          var option = document.createElement('option');
+          option.value = optionsText[j];
+          option.text = optionsText[j];
+          select.appendChild(option);
+        }
+
+        // Adiciono o select à célula td
+        event.target.appendChild(select);
+
+        // Crie um novo elemento button
+        var button = document.createElement('button');
+
+        // Defino o texto do botão
+        button.textContent = 'Enviar';
+
+        // Adiciono uma classe ao botão Enviar
+        button.classList.add('btn-atualiza-status');
+
+        // adiciono a função para envio do novo status, mas ainda com os parâmetros vazios
+        button.setAttribute('onclick', 'updateItemStatus("", "")');
+
+        // Obtenho o id do pedido (primeira célula da linha)
+        var inputId = event.target.parentNode.cells[0].innerHTML;
+
+        // Adiciono um listener ao select
+        select.addEventListener('change', function () {
+
+          // Obtenho o valor selecionado
+          var novoStatus = this.value;
+
+          // Insiro um atributo "onclick" para disparar a atualização de status do pedido após o envio, com os parâmetros necessários (id e novo status)
+          button.setAttribute('onclick', 'updateItemStatus(' + inputId + ', "' + novoStatus + '")');
+        });
+
+        // Adiciono o botão à célula
+        event.target.appendChild(button);
+      }
+    }
+  }
+
+});
+
+/*
+--------------------------------------------------------------------------------------
+Função para alterar o status de um item na lista do servidor via requisição PUT
+--------------------------------------------------------------------------------------
+*/
+
+const updateItemStatus = (inputId, novoStatus) => {
+
+  if (novoStatus === '') {
+    alert("Selecione o status");
+  } else {
+
+    // Defino a URL e o corpo da requisição
+    var url = 'http://127.0.0.1:5000/agendamento?id=' + inputId;
+
+    const formData = new FormData();
+    formData.append('id', inputId);
+    formData.append('status_agendamento', novoStatus);
+
+    // Envio a requisição PUT
+    fetch(url, {
+      method: 'put',
+      body: formData
+    })
+      .then(response => response.json())
+      .then(data => console.log(data))
+      .then(alert("Status atualizado!"))
+      .then(() => {
+          // crio uma variável para capturar a célula com a classe "em-edicao"
+          const celula = document.querySelector('.em-edicao');
+          // Apago todo o conteúdo da célula
+          celula.innerHTML = '';
+          // Removo a clase "em-edicao" da célula
+        celula.classList.remove('em-edicao');
+        // Adiciono o novo conteúdo da célula
+        celula.textContent = novoStatus;
+      })
+      .catch((error) => {
+        console.error('Error:', error);
+      });
+  }
+}

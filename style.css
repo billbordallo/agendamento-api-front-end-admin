@@ -1,3 +1,23 @@
+header {
+    padding-bottom: 1rem;
+}
+
+main {
+    padding-top: 1rem;
+}
+
+main p {
+    text-align: center;
+}
+
+main section aside {
+    margin: 1rem auto;
+}
+
+main aside p {
+    text-align: left;
+}
+
 footer p {
     text-align: center;
 }
@@ -46,4 +66,56 @@ tr td:nth-child(6).em-edicao {
     border-radius: 5px;
     padding: 10px;
     font-weight: normal;
+    text-align: center;
+}
+
+ul#previsao {
+    list-style-type: none;
+    padding: 0;
+}
+
+ul#previsao li {
+    text-align: center;
+    display: inline-block;
+    margin: 0 20px;
+}
+
+nav {
+    margin-bottom: 10px;
+}
+
+tr td:nth-child(9).em-edicao {
+    background-image: none;
+}
+
+.btn-atualiza-status {
+    padding: 12px;
+    background-color: #2ab53a;
+    color: white;
+    text-align: center;
+    font-size: 16px;
+    cursor: pointer;
+    transition: 0.3s;
+    border: none;
+}
+
+.btn-atualiza-status {
+    margin-left: 10px;
+}
+
+.btn-atualiza-status:hover {
+    background-color: #136e1e;
+    color: white;
+}
+
+#confirmacao {
+    display: none;
+}
+
+#section-agendamentos {
+    display: none;
+}
+
+#nenhum-agendamento {
+    display: none;
 }

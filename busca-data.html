@@ -27,18 +27,17 @@
     </header>
     <main>
         <section>
-            <div id="clima">
-                <p>Programe-se! Confira a previsão do tempo para amanhã:</p>
-                <ul id="previsao">
-                    <li><strong>Cidade:</strong> <br><span id="cidade"></span></li>
-                    <li><strong>Dia e hora:</strong> <br><span id="dia"></span></li>
-                    <li><strong>Previsão:</strong> <br><span id="descricao"></span></li>
-                    <li><strong>Temperatura:</strong> <br><span id="temperatura"></span></li>
-                </ul>
-            </div>
+            <h2>Agendamentos por data</h2>
+            <p>Selecione uma data para ver os agendamentos no dia selecionado:</p>
+            <form id="form-servico-data" action="#" method="post">
+                <label for="data_cliente">Data:</label>
+                <input type="date" name="data_cliente" id="data_cliente" required>
+                <input type="submit" value="Pesquisar">
+            </form>
         </section>
-        <section>
-            <h2>Agendamentos</h2>
+        <section id="section-agendamentos">
+            <h2>Resultado</h2>
+            <p>Os seguintes agendamentos estão cadastrados para esta data:</p>
             <table id="tabela-agendamentos">
                 <thead>
                     <tr>
@@ -56,16 +55,21 @@
                 </thead>
                 <tbody id="agendamentos">
                     <tr>
-                        <td colspan="9" id="nenhum-pedido">Ainda não há nenhum agendamento cadastrado. Envie o link para seus clientes para que eles realizem um agendamento.</th>
+                        
                     </tr>
                 </tbody>
             </table>
+        </section>
+        <section id="nenhum-agendamento">
+            <p>
+                Ainda não há nenhum agendamento cadastrado para esta data.
+            </p>
         </section>
     </main>
     <footer>
         <p>Desenvolvido por <a href="https://github.com/billbordallo" target="_blank">Bill Bordallo</a></p>
         <p>© Copyright 2024. Todos os direitos reservados.</p>
     </footer>
-    <script src="js/scripts.js"></script>
+    <script src="js/busca-data-scripts.js"></script>
 </body>
 </html>
