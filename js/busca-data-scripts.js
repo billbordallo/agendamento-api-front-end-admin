@@ -108,6 +108,23 @@ const removeElement = () => {
     }
   }
 
+    /*
+    --------------------------------------------------------------------------------------
+    Função para deletar um item da lista do servidor via requisição DELETE
+    --------------------------------------------------------------------------------------
+  */
+    const deleteItem = (item) => {
+      console.log(item)
+      let url = 'http://127.0.0.1:5000/agendamento?id=' + item;
+      fetch(url, {
+        method: 'delete'
+      })
+        .then((response) => response.json())
+        .catch((error) => {
+          console.error('Error:', error);
+        });
+    }
+
   /*
   --------------------------------------------------------------------------------------
   Função para criar um select ao clicar sobre a coluna status
