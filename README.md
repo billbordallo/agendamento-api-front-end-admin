@@ -25,27 +25,27 @@ Para rodar este repositório usando o Docker (método recomendado), após clonar
 
 1. Certifique-se de ter o [Docker](https://docs.docker.com/engine/install/) instalado e em execução em sua máquina.
 
-2. Navegue até o diretório que contém o `Dockerfile` e o `requirements.txt` no terminal.
+2. Navegue até o diretório que contém o arquivo `index.html` e o `Dockerfile` no terminal.
 
 3. Execute **como administrador** o seguinte comando para construir a imagem Docker:
 
 ```
-$ docker build -t agendamento-api-front-end .
+$ docker build -t agendamento-api-front-end-admin .
 ```
 
 Uma vez criada a imagem, para executar o container basta executar, **como administrador**, seguinte o comando:
 
 ```
-$ docker run -d -p 3000:3000 agendamento-api-front-end
+$ docker run -d -p 8000:80 agendamento-api-front-end-admin
 ```
 
-Uma vez executando, para acessar a API, basta abrir o [http://localhost:3000/#/](http://localhost:3000/#/) no navegador.
+Uma vez executando, para acessar a API, basta abrir o [http://localhost:8000](http://localhost:8000) no navegador.
 
 ## Como rodar este repositório sem usar o Docker
 
-Por se tratar de um site estático, contendo apenas HTML, CSS e Javascript, você também pode clonar o repositório em seu computador e abrir o arquivo `index.html` em seu navegador preferido.
+Por se tratar de um site estático, contendo apenas HTML, CSS e JavaScript, você também pode clonar o repositório em seu computador e abrir o arquivo `index.html` em seu navegador preferido.
 
-Lembre-se, no entanto, que para ter acesso a todos os recusos do projeto, é necessário ter os quatro repositórios rodando simultaneamente em seu ambiente local.
+Lembre-se, no entanto, que para ter acesso a todos os recursos do projeto, é necessário ter os quatro repositórios rodando simultaneamente em seu ambiente local.
 
 ## Sobre o projeto
 
