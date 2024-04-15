@@ -45,6 +45,12 @@ const postItem = async (inputNomeServico, inputDescServico, inputDuracaoServico,
       });
   }
 
+  /*
+  --------------------------------------------------------------------------------------
+  Função para lidar com o envio do formulário de cadastro de servico
+  --------------------------------------------------------------------------------------
+*/
+
   // No form #form-servico adicione prevent default e dê um console.log() com os valores dos campos
 document.getElementById('form-servico').addEventListener('submit', function(event) {
     event.preventDefault();

@@ -1,3 +1,9 @@
+  /*
+  --------------------------------------------------------------------------------------
+  Função para lidar com o envio do formulário de busca de agendamentos por data
+  --------------------------------------------------------------------------------------
+*/
+  
   // No form #form-servico-data adicione prevent default 
   document.getElementById('form-servico-data').addEventListener('submit', function(event) {
     event.preventDefault();
@@ -15,6 +21,15 @@
       .then((response) => response.json())
       .then((data) => {
         if (data.agendamentos && data.agendamentos.length != 0) {
+            // Antes de exibir a tabela, limpo a tabela existente (caso haja)
+            var table = document.getElementById('agendamentos');
+            var rowCount = table.rows.length;
+            for (var i = rowCount - 1; i > 0; i--) {
+              table.deleteRow(i);
+            }
+            // Escondo a mensagem de que não há agendamentos
+            document.getElementById("nenhum-agendamento").style.display = "none";
+
             // Se houver agendamentos para a data informada, exibo a tabela
             document.getElementById("section-agendamentos").style.display = "flex";
             // Populo a tabela com os agendamentos existentes para a data informada
