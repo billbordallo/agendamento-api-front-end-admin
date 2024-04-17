@@ -20,14 +20,14 @@ const getList = async () => {
       });
   }
   
-  /*
-    --------------------------------------------------------------------------------------
-    Chamada da função para carregamento inicial dos dados
-    --------------------------------------------------------------------------------------
-  */
+/*
+  --------------------------------------------------------------------------------------
+  Chamada da função para carregamento inicial dos dados
+  --------------------------------------------------------------------------------------
+*/
   getList()
 
-  /*
+/*
   --------------------------------------------------------------------------------------
   Função para inserir items na lista apresentada
   --------------------------------------------------------------------------------------
@@ -40,9 +40,9 @@ const insertList = (id, nome_cliente, email_cliente, celular_cliente, endereco_c
     for (var i = 0; i < item.length; i++) {
       var cel = row.insertCell(i);
       cel.textContent = item[i];
-      // Na sexta coluna de cada linha, adiciono a indicação para editar o status do pedido
+      // Na sexta coluna de cada linha, adiciono a indicação para editar o status do agendamento
       if (i === 8) {
-        cel.setAttribute('title', 'Clique para editar o status do pedido');
+        cel.setAttribute('title', 'Clique para editar o status do agendamento');
         cel.setAttribute('class', 'editar-status');
       }
     }
@@ -51,7 +51,7 @@ const insertList = (id, nome_cliente, email_cliente, celular_cliente, endereco_c
     removeElement()
   }
 
-  /*
+/*
   --------------------------------------------------------------------------------------
   Função para criar um botão delete para cada item da lista
   --------------------------------------------------------------------------------------
@@ -61,7 +61,7 @@ const insertButton = (parent) => {
     let txt = document.createTextNode("\u00D7");
     span.className = "delete";
     span.appendChild(txt);
-    span.setAttribute('title', 'Remover pedido');
+    span.setAttribute('title', 'Remover item');
     parent.appendChild(span);
 }
 
